@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en" >
 
@@ -15,7 +13,7 @@
 <link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
 
 
-  <title>CodePen - 2125-3</title>
+  <title>CodePen - 2126-3</title>
   
   
   
@@ -34,7 +32,11 @@
 </head>
 
 <body translate="no" >
-  <div>
+  <audio controls id="smack">
+  <source src="https://math.seattleacademy.org/garyanderson/snd/smack.wav" type="audio/wav">
+</audio>
+
+<div>
   Bot Count: <span id="botCount">0</span> Deaths: <span id="deaths">0</span>
   <button id="resetBots">Reset Bots</button>
 </div>
@@ -44,6 +46,7 @@
   
       <script id="rendered-js" >
 console.clear();
+const smacksnd = document.getElementById("smack");
 const c = document.getElementById("myCanvas");
 const ctx = c.getContext("2d");
 let bots = [];
@@ -124,6 +127,7 @@ function checkCollide() {
         (bots[i].x - bots[j].x) ** 2 + (bots[i].y - bots[j].y) ** 2
       );
       if (d <= bots[i].r + bots[j].r) {
+        smacksnd.play();
         if (bots[i].r < bots[j].r) {
           bots[j].r = Math.sqrt(bots[i].r ** 2 + bots[j].r ** 2);
           bots[i].r = 0;
